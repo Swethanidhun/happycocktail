@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 
-class Cardwidget extends StatefulWidget {
-  @override
-  State<Cardwidget> createState() => _CardwidgetState();
-}
-
-class _CardwidgetState extends State<Cardwidget> {
+class Cardwidget extends StatelessWidget {
+  Cardwidget({super.key, required this.name,required this.url});
+  final String name;
+final String url;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -20,16 +18,8 @@ class _CardwidgetState extends State<Cardwidget> {
                   color: Colors.white,
                   elevation: 1,
                   child: Container(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Text("Nicoise Salad",style: TextStyle(fontSize: 18,fontWeight: FontWeight.w600),),
-                        Text("10",style: TextStyle(fontSize: 18,color: Color.fromARGB(255, 1, 110, 50)),),
-                      ],
-                    ),
                     height: 180,
-                    width: 250,
+                    width: double.infinity,
                     decoration: BoxDecoration(boxShadow: [
                       BoxShadow(
                           color: const Color.fromARGB(255, 1, 167, 131)
@@ -37,6 +27,26 @@ class _CardwidgetState extends State<Cardwidget> {
                           blurRadius: 15,
                           blurStyle: BlurStyle.outer)
                     ], borderRadius: BorderRadius.circular(20)),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        SizedBox(
+                            width: 180,
+                            child: Text(
+                              name,
+                              style: const TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.w600),
+                              maxLines: 1,
+                            )),
+                        const Text(
+                          "10",
+                          style: TextStyle(
+                              fontSize: 18,
+                              color: Color.fromARGB(255, 1, 110, 50)),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -50,9 +60,10 @@ class _CardwidgetState extends State<Cardwidget> {
                         BoxShadow(
                             blurRadius: 6, color: Colors.grey.withOpacity(0.3)),
                       ]),
-                  child: const CircleAvatar(
+                  child:  CircleAvatar(
                     radius: 65,
-                    backgroundColor: Colors.white, // Change color as needed
+                    backgroundColor: Colors.white, 
+                    backgroundImage:NetworkImage(url),// Change color as needed
                   ),
                 ),
               ),
