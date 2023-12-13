@@ -1,3 +1,4 @@
+import 'package:cocktail/data/themes/Appcolors.dart';
 import 'package:flutter/material.dart';
 
 class Circleavathar extends StatelessWidget {
@@ -10,9 +11,9 @@ class Circleavathar extends StatelessWidget {
       onTap: onTap,
       child: CircleAvatar(
         child: Container(
-          height: 40,
-          child: Image(image: AssetImage(url),)),
-        backgroundColor: Colors.grey,
+          height: 28,
+          child: Image(image: AssetImage(url),color:Appcolor.greenButton)),
+        backgroundColor:Appcolor.lightGreen,
         maxRadius: 30,
       ),
     );

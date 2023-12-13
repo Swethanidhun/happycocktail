@@ -1,6 +1,8 @@
 import 'package:cocktail/data/modules/Home_module/Home_controller.dart';
 import 'package:cocktail/data/widgets/Card.dart';
 import 'package:cocktail/data/widgets/appbar.dart';
+import 'package:cocktail/data/widgets/appdrawer.dart';
+import 'package:cocktail/data/widgets/bottomnavigationbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -18,23 +20,13 @@ class _HomePageState extends State<HomePage> {
     final homecontroller = Get.find<HomeController>();
 
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-          selectedItemColor: const Color.fromARGB(255, 1, 110, 50),
-          unselectedItemColor: Colors.black,
-          items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: ""),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.favorite_border), label: ""),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.shopping_cart_outlined), label: ""),
-            BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: "")
-          ]),
-      appBar:const Appbar(),
+      drawer: Appdrawer(),
+      bottomNavigationBar: BottomNavigation(),
+      appBar: const Appbar(),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30.0),
         child: ListView(
           children: [
-            
             const SizedBox(
               height: 50,
             ),

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 class Button extends StatelessWidget {
-  Button({super.key, required this.text,required this.onPressed});
+  Button({super.key, required this.text,required this.onPressed,required this.width});
   final String text;
   final  void Function()? onPressed;
+  final double? width;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,7 +17,7 @@ class Button extends StatelessWidget {
         )
       ], borderRadius: BorderRadius.circular(35)),
       height: 45,
-      width: double.infinity,
+      width: width,
       child: ElevatedButton(
         style: const ButtonStyle(
             backgroundColor:

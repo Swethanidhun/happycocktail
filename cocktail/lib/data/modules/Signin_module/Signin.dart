@@ -71,6 +71,7 @@ class _SigninState extends State<Signin> {
                   onPressed: () {
                     Get.to(() => const Login());
                   },
+                  width: double.infinity,
                 ),
                 const SizedBox(
                   height: 30,

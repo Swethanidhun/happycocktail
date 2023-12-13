@@ -64,7 +64,9 @@ class _LoginState extends State<Login> {
                 const SizedBox(height: 20,),
                 Button(text: "Login",onPressed: () {
                   Get.to(() => HomePage());
-                },),
+                },
+                width: double.infinity,
+                ),
               ],
             ),
           ),
