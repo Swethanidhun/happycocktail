@@ -1,3 +1,4 @@
+import 'package:cocktail/data/modules/alcoholic_module/alcoholic_controller.dart';
 import 'package:cocktail/data/modules/content_module/content.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -9,6 +10,8 @@ final String url;
 final int index;
   @override
   Widget build(BuildContext context) {
+    // Get.put(AlcoholicController());
+    // final alcoholiccontroller = Get.find<AlcoholicController>();
 
     return Column(
       children: [
@@ -20,6 +23,7 @@ final int index;
               Center(
                 child: GestureDetector(
                   onTap: () {
+                    // alcoholiccontroller.getDetails(index);
                     Get.to(() => ContentPage(index: index,));
                   },
                   child: Card(

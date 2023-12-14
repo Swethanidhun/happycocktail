@@ -55,7 +55,7 @@ class Appbar extends StatelessWidget implements PreferredSizeWidget {
                     Circleavathar(
                       url: "assets/images/cocktail.png",
                       onTap: () {
-                        Get.to(() => const HomePage());
+                        Get.to(() =>  HomePage());
                       },
                     ),
                     Circleavathar(

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 class Textfield extends StatelessWidget {
-   Textfield({super.key,required this.headline});
+   Textfield({super.key,required this.headline,required this.controller});
 final String headline;
+final TextEditingController? controller;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -24,6 +25,7 @@ final String headline;
           ], borderRadius: BorderRadius.circular(35)),
           height: 60,
           child: TextFormField(
+            controller: controller,
             decoration: InputDecoration(
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(35),

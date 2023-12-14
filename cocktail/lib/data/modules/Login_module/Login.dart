@@ -1,7 +1,9 @@
 import 'package:cocktail/data/modules/Home_module/Homepage.dart';
+import 'package:cocktail/data/modules/Signin_module/signin_controller.dart';
 import 'package:cocktail/data/widgets/button.dart';
 import 'package:cocktail/data/widgets/textfield.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 
@@ -15,7 +17,10 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    Get.put(SigninController());
+    final signincontroller = Get.find<SigninController>();
+
+    return Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(),
         body: Container(
@@ -25,7 +30,7 @@ class _LoginState extends State<Login> {
               image: DecorationImage(
                   fit: BoxFit.fill, image: AssetImage("assets/images/bg.png"))),
           child: Padding(
-            padding:const EdgeInsets.symmetric(horizontal: 30),
+            padding: const EdgeInsets.symmetric(horizontal: 30),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -53,19 +58,32 @@ class _LoginState extends State<Login> {
                   height: 20,
                 ),
                 Textfield(
-                  headline: "Username",
+                  controller: signincontroller.loginemailcontroller,
+                  headline: "Email",
                 ),
                 const SizedBox(
                   height: 10,
                 ),
-                Textfield(headline: "Password"),
-                const SizedBox(height: 8,),
-                const Text("Forgot password?",style: TextStyle(fontSize: 12,color:Color.fromARGB(255, 76, 175, 145)),),
-                const SizedBox(height: 20,),
-                Button(text: "Login",onPressed: () {
-                  Get.to(() => HomePage());
-                },
-                width: double.infinity,
+                Textfield(
+                    controller: signincontroller.loginpasswordcontroller,
+                    headline: "Password"),
+                const SizedBox(
+                  height: 8,
+                ),
+                const Text(
+                  "Forgot password?",
+                  style: TextStyle(
+                      fontSize: 12, color: Color.fromARGB(255, 76, 175, 145)),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Button(
+                  text: "Login",
+                  onPressed: () {
+                    Get.to(() => HomePage());
+                  },
+                  width: double.infinity,
                 ),
               ],
             ),

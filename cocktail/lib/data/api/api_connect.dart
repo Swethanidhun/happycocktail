@@ -3,9 +3,10 @@ import 'dart:convert';
 import 'package:cocktail/data/api/urls.dart';
 import 'package:cocktail/data/models/alcoholicmodel.dart';
 import 'package:cocktail/data/models/cocktaildetailsbyidmodel.dart';
-import 'package:cocktail/data/models/ingrediantmodel.dart';
+import 'package:cocktail/data/models/detailsmodel.dart';
 import 'package:cocktail/data/models/nonalcoholicmodel.dart';
 import 'package:cocktail/data/models/ordinarydrinkmodel.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 class ApiConnect {
@@ -65,6 +66,22 @@ class ApiConnect {
       if (response.statusCode == 200) {
         var result = json.decode(response.body);
         return NonAlcoholicModel.listFromJson(result['drinks']);
+      } else {
+        throw Exception('Failed to load data');
+      }
+    } catch (e) {
+      print('Error: $e');
+      rethrow;
+    }
+  }
+
+    Future<List<Detailsmodel>> getDetails(String id) async {
+    try {
+      var response = await http.get(Uri.parse(
+          'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=$id'));
+      if (response.statusCode == 200) {
+        var result = json.decode(response.body);
+        return Detailsmodel.listFromJson(result['drinks']);
       } else {
         throw Exception('Failed to load data');
       }

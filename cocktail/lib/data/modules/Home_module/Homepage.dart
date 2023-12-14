@@ -3,12 +3,12 @@ import 'package:cocktail/data/widgets/Card.dart';
 import 'package:cocktail/data/widgets/appbar.dart';
 import 'package:cocktail/data/widgets/appdrawer.dart';
 import 'package:cocktail/data/widgets/bottomnavigationbar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
-
+   HomePage({super.key});
   @override
   State<HomePage> createState() => _HomePageState();
 }
@@ -16,8 +16,11 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    FirebaseAuth auth = FirebaseAuth.instance;
+
     Get.put(HomeController());
     final homecontroller = Get.find<HomeController>();
+
 
     return Scaffold(
       drawer: Appdrawer(),
@@ -27,6 +30,7 @@ class _HomePageState extends State<HomePage> {
         padding: const EdgeInsets.symmetric(horizontal: 30.0),
         child: ListView(
           children: [
+            auth.currentUser!.emailVerified ? SizedBox() : Text("${auth.currentUser!.email} not verifyed"),
             const SizedBox(
               height: 50,
             ),

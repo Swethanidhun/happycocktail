@@ -69,7 +69,6 @@ class _ContentPageState extends State<ContentPage> {
                   width: 200,
                 ),
               ),
-              Text("")
             ],
           ),
         ),

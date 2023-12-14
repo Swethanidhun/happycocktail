@@ -1,10 +1,8 @@
-import 'package:cocktail/data/modules/Login_module/Login.dart';
+import 'package:cocktail/data/modules/Signin_module/signin_controller.dart';
 import 'package:cocktail/data/widgets/button.dart';
 import 'package:cocktail/data/widgets/textfield.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/get_navigation.dart';
-
+import 'package:get/get.dart';
 class Signin extends StatefulWidget {
   const Signin({super.key});
 
@@ -15,6 +13,9 @@ class Signin extends StatefulWidget {
 class _SigninState extends State<Signin> {
   @override
   Widget build(BuildContext context) {
+    Get.put(SigninController());
+    final signincontroller = Get.find<SigninController>();
+
     return Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(),
@@ -53,23 +54,29 @@ class _SigninState extends State<Signin> {
                   height: 20,
                 ),
                 Textfield(
+                  controller: signincontroller.usernamecontroller,
                   headline: "Username",
                 ),
                 const SizedBox(
                   height: 10,
                 ),
-                Textfield(headline: "Password"),
+                Textfield(
+                    controller: signincontroller.emailcontroller,
+                    headline: "Email"),
                 const SizedBox(
                   height: 10,
                 ),
-                Textfield(headline: "Confirm password"),
+                Textfield(
+                    controller: signincontroller.passwordcontroller,
+                    headline: "Password"),
                 const SizedBox(
                   height: 40,
                 ),
                 Button(
                   text: "Sign up",
                   onPressed: () {
-                    Get.to(() => const Login());
+                    signincontroller.SignUp();
+                    // Get.to(() => const Login());
                   },
                   width: double.infinity,
                 ),
