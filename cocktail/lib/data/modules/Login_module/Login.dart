@@ -1,4 +1,4 @@
-import 'package:cocktail/data/modules/Home_module/Homepage.dart';
+import 'package:cocktail/data/modules/Signin_module/Signin.dart';
 import 'package:cocktail/data/modules/Signin_module/signin_controller.dart';
 import 'package:cocktail/data/widgets/button.dart';
 import 'package:cocktail/data/widgets/textfield.dart';
@@ -81,9 +81,30 @@ class _LoginState extends State<Login> {
                 Button(
                   text: "Login",
                   onPressed: () {
-                    Get.to(() => HomePage());
+                    signincontroller.login();
                   },
                   width: double.infinity,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text("Don't have an Account? "),
+                    GestureDetector(
+                      onTap: () {
+                        Get.to(() => const Signin());
+                      },
+                      child: const Text(
+                        "Sign Up",
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Color.fromARGB(255, 76, 175, 145),
+                            fontWeight: FontWeight.w600),
+                      ),
+                    )
+                  ],
                 ),
               ],
             ),

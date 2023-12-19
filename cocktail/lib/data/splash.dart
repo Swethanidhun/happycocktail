@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:cocktail/data/modules/Signin_module/Signin.dart';
+import 'package:cocktail/data/modules/Login_module/Login.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
@@ -18,7 +18,7 @@ class _SplashState extends State<Splash> {
     // TODO: implement initState
     super.initState();
     Timer(Duration(seconds: 3), () { 
-      Get.to(() => Signin());
+      Get.to(() => Login());
     });
   }
   @override
@@ -27,19 +27,10 @@ class _SplashState extends State<Splash> {
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20),
         child: Center(
-          child: Row(
-            children: [
-              SizedBox(
-                  height: 100,
-                  child: Image(
-                      image: AssetImage(
-                          "assets/images/—Pngtree—cartoon cocktail_2716380.png"))),
-              SizedBox(
-                  height: 40,
-                  child: Image(
-                      image: AssetImage("assets/images/HappyCocktail.png")))
-            ],
-          ),
+          child: SizedBox(
+              height: 40,
+              child: Image(
+                  image: AssetImage("assets/images/HappyCocktail.png"))),
         ),
       ),
     );
