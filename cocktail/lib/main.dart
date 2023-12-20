@@ -3,12 +3,15 @@ import 'package:cocktail/data/splash.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/adapters.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: const FirebaseOptions(apiKey: "AIzaSyAWmpPcncGvkfmTdfXg1JmxVhO1l9vHm90", appId: "1:60298523262:android:cda437a0dfac9fd78d9e2f", messagingSenderId: "60298523262", projectId: "happycocktail")
   );
+  await Hive.initFlutter();
   runApp(const MyApp());
 }
 

@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
         padding: const EdgeInsets.symmetric(horizontal: 30.0),
         child: ListView(
           children: [
-            auth.currentUser!.emailVerified ? SizedBox() : Text("${auth.currentUser!.email} not verifyed"),
+            // auth.currentUser!.emailVerified ? SizedBox() : Text("${auth.currentUser!.email} not verifyed"),
             const SizedBox(
               height: 50,
             ),

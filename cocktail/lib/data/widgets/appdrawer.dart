@@ -1,22 +1,27 @@
 import 'package:cocktail/data/modules/Home_module/Homepage.dart';
+import 'package:cocktail/data/modules/Signin_module/signin_controller.dart';
 import 'package:cocktail/data/modules/alcoholic_module/alcoholic.dart';
 import 'package:cocktail/data/modules/non_alcoholic_module/non_alcoholic.dart';
 import 'package:cocktail/data/modules/ordinarydrink_module/ordinaryDrink.dart';
 import 'package:cocktail/data/widgets/circleavathar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class Appdrawer extends StatelessWidget {
   const Appdrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
+    FirebaseAuth auth = FirebaseAuth.instance;
+        Get.put(SigninController());
+    final signincontroller = Get.find<SigninController>();
+
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
-          const DrawerHeader(
+           DrawerHeader(
               decoration:
                   BoxDecoration(color: Color.fromARGB(255, 245, 206, 88)),
               child: Column(
@@ -25,7 +30,7 @@ class Appdrawer extends StatelessWidget {
                     url: "assets/images/—Pngtree—cartoon cocktail_2716380.png",
                   ),
                   Text(
-                    "Cocktail",
+                    "${auth.currentUser!.email}",
                     style: TextStyle(fontSize: 18),
                   )
                 ],
@@ -96,8 +101,14 @@ class Appdrawer extends StatelessWidget {
           const ListTile(
             title: Text("Home"),
           ),
-          const ListTile(
-            title: Text("Home"),
+          GestureDetector(
+            onTap: () {
+              signincontroller.signOut();
+            },
+            child: const ListTile(
+              title: Text("Sign out"),
+              trailing: Icon(Icons.logout_outlined),
+            ),
           ),
         ],
       ),

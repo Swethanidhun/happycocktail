@@ -5,11 +5,14 @@ import 'package:cocktail/data/modules/Login_module/Login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:hive/hive.dart';
 import 'package:uuid/uuid.dart';
 
 class SigninController extends GetxController {
   FirebaseAuth auth = FirebaseAuth.instance;
   FirebaseFirestore db = FirebaseFirestore.instance;
+  final store = GetStorage();
   final usernamecontroller = TextEditingController();
   final emailcontroller = TextEditingController();
   final passwordcontroller = TextEditingController();
@@ -34,8 +37,11 @@ class SigninController extends GetxController {
       username: usernamecontroller.text,
       email: auth.currentUser!.email,
       password: passwordcontroller.text,
-      id: Uuid().v4().toString(),
+      id: const Uuid().v4().toString(),
     );
+    box1.put('email_${user.id}', auth.currentUser!.email);
+    box1.put('password_${user.id}', passwordcontroller.text);
+    box1.put('username_${user.id}', usernamecontroller.text);
     await db
         .collection("login")
         .add(user.toJson())
@@ -47,17 +53,19 @@ class SigninController extends GetxController {
   }
 
   signOut() async {
+    loginemailcontroller.clear();
+    loginpasswordcontroller.clear();
     await auth.signOut();
+    Get.to(() => Login());
   }
 
   login() async {
     try {
-      if (loginemailcontroller.text == emailcontroller.text &&
-          loginpasswordcontroller.text == passwordcontroller.text) {
-        await FirebaseAuth.instance.signInWithEmailAndPassword(
-            email: emailcontroller.text, password: passwordcontroller.text);
-        Get.to(() => HomePage());
-      }
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: loginemailcontroller.text,
+          password: loginpasswordcontroller.text);
+
+      Get.to(() => HomePage());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         Get.snackbar('Error', 'No user found for that email.');
@@ -70,5 +78,43 @@ class SigninController extends GetxController {
   verifyEmail() async {
     await auth.currentUser?.sendEmailVerification();
     Get.snackbar("Email", "send");
+  }
+
+// ---------------hive--------------
+  late Box box1;
+  void createBox() async {
+    box1 = await Hive.openBox("myBox");
+    getData();
+  }
+
+  List<UserModel> userlist = [];
+
+  void getData() async {
+    for (int i = 0; i < box1.length; i++) {
+      final key = box1.keyAt(i);
+      final value = box1.get(key);
+
+      if (key.startsWith('email_')) {
+        final userId = key.substring('email_'.length);
+        final password = box1.get('password_$userId');
+        final username = box1.get('username_$userId');
+        final user = UserModel(
+          username: username,
+          email: value,
+          password: password ?? '',
+          id: userId,
+        );
+
+        userlist.add(user);
+      }
+    }
+  }
+
+// ---------------------------------
+  @override
+  void onReady() {
+    // TODO: implement onReady
+    super.onReady();
+    createBox();
   }
 }

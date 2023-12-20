@@ -1,5 +1,6 @@
 import 'package:cocktail/data/modules/Signin_module/Signin.dart';
 import 'package:cocktail/data/modules/Signin_module/signin_controller.dart';
+import 'package:cocktail/data/modules/foregotpasswordmodule/forgotpassword.dart';
 import 'package:cocktail/data/widgets/button.dart';
 import 'package:cocktail/data/widgets/textfield.dart';
 import 'package:flutter/material.dart';
@@ -70,10 +71,15 @@ class _LoginState extends State<Login> {
                 const SizedBox(
                   height: 8,
                 ),
-                const Text(
-                  "Forgot password?",
-                  style: TextStyle(
-                      fontSize: 12, color: Color.fromARGB(255, 76, 175, 145)),
+                GestureDetector(
+                  onTap: () {
+                    Get.to(() => ForgotPassword());
+                  },
+                  child: const Text(
+                    "Forgot password?",
+                    style: TextStyle(
+                        fontSize: 12, color: Color.fromARGB(255, 76, 175, 145)),
+                  ),
                 ),
                 const SizedBox(
                   height: 20,
