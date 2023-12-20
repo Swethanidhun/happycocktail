@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Cardwidget extends StatelessWidget {
-  Cardwidget({super.key, required this.name,required this.url});
+  const Cardwidget({super.key, required this.name,required this.url});
   final String name;
 final String url;
   @override

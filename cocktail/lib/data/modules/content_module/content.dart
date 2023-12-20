@@ -3,10 +3,9 @@ import 'package:cocktail/data/themes/Appcolors.dart';
 import 'package:cocktail/data/widgets/button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class ContentPage extends StatefulWidget {
-  ContentPage({super.key, required this.index});
+  const ContentPage({super.key, required this.index});
   final int index;
   @override
   State<ContentPage> createState() => _ContentPageState();

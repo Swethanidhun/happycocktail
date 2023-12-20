@@ -19,7 +19,7 @@ class SigninController extends GetxController {
   final loginemailcontroller = TextEditingController();
   final loginpasswordcontroller = TextEditingController();
   var loading = false.obs;
-  SignUp() async {
+  signUp() async {
     try {
       await auth.createUserWithEmailAndPassword(
           email: emailcontroller.text, password: passwordcontroller.text);
@@ -56,7 +56,7 @@ class SigninController extends GetxController {
     loginemailcontroller.clear();
     loginpasswordcontroller.clear();
     await auth.signOut();
-    Get.to(() => Login());
+    Get.to(() => const Login());
   }
 
   login() async {
@@ -65,7 +65,7 @@ class SigninController extends GetxController {
           email: loginemailcontroller.text,
           password: loginpasswordcontroller.text);
 
-      Get.to(() => HomePage());
+      Get.to(() => const HomePage());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         Get.snackbar('Error', 'No user found for that email.');

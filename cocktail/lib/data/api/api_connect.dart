@@ -6,7 +6,6 @@ import 'package:cocktail/data/models/cocktaildetailsbyidmodel.dart';
 import 'package:cocktail/data/models/detailsmodel.dart';
 import 'package:cocktail/data/models/nonalcoholicmodel.dart';
 import 'package:cocktail/data/models/ordinarydrinkmodel.dart';
-import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 class ApiConnect {
@@ -22,7 +21,6 @@ class ApiConnect {
         throw Exception('Failed to load data');
       }
     } catch (e) {
-      print('Error: $e');
       rethrow;
     }
   }
@@ -38,7 +36,6 @@ class ApiConnect {
         throw Exception('Failed to load data');
       }
     } catch (e) {
-      print('Error: $e');
       rethrow;
     }
   }
@@ -46,7 +43,7 @@ class ApiConnect {
   Future<List<AlcoholicModel>> getAlcoholicList() async {
     try {
       var response = await http.get(Uri.parse(
-          "${EndPoints.baseUrl + EndPoints.alcoholic}"));
+          EndPoints.baseUrl + EndPoints.alcoholic));
       if (response.statusCode == 200) {
         var result = json.decode(response.body);
         return AlcoholicModel.listFromJson(result['drinks']);
@@ -54,7 +51,6 @@ class ApiConnect {
         throw Exception('Failed to load data');
       }
     } catch (e) {
-      print('Error: $e');
       rethrow;
     }
   }
@@ -70,7 +66,6 @@ class ApiConnect {
         throw Exception('Failed to load data');
       }
     } catch (e) {
-      print('Error: $e');
       rethrow;
     }
   }
@@ -86,7 +81,6 @@ class ApiConnect {
         throw Exception('Failed to load data');
       }
     } catch (e) {
-      print('Error: $e');
       rethrow;
     }
   }

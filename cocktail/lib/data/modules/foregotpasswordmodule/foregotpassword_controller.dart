@@ -8,7 +8,6 @@ class ForgotController extends GetxController {
   final emailcontroller = TextEditingController();
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     emailcontroller.dispose();
   }

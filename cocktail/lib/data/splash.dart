@@ -17,20 +17,19 @@ class Splash extends StatefulWidget {
 class _SplashState extends State<Splash> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     // Timer(const Duration(seconds: 3), () {
     //   Get.to(() => const Login());
     // });
         User? user = FirebaseAuth.instance.currentUser;
     if (user != null) {
-      Timer(Duration(seconds: 3), () {
-      Get.to(() => HomePage());
+      Timer(const Duration(seconds: 3), () {
+      Get.to(() => const HomePage());
 
        });
     } else {
-      Timer(Duration(seconds: 3), () {
-      Get.to(() => Login());
+      Timer(const Duration(seconds: 3), () {
+      Get.to(() => const Login());
 
        });
     }

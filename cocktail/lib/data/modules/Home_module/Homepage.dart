@@ -1,14 +1,14 @@
-import 'package:cocktail/data/modules/Home_module/Home_controller.dart';
-import 'package:cocktail/data/widgets/Card.dart';
-import 'package:cocktail/data/widgets/appbar.dart';
-import 'package:cocktail/data/widgets/appdrawer.dart';
-import 'package:cocktail/data/widgets/bottomnavigationbar.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../widgets/Card.dart';
+import '../../widgets/appbar.dart';
+import '../../widgets/appdrawer.dart';
+import '../../widgets/bottomnavigationbar.dart';
+import 'Home_controller.dart';
+
 class HomePage extends StatefulWidget {
-   HomePage({super.key});
+   const HomePage({super.key});
   @override
   State<HomePage> createState() => _HomePageState();
 }
@@ -16,15 +16,14 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    FirebaseAuth auth = FirebaseAuth.instance;
 
     Get.put(HomeController());
     final homecontroller = Get.find<HomeController>();
 
 
     return Scaffold(
-      drawer: Appdrawer(),
-      bottomNavigationBar: BottomNavigation(),
+      drawer: const Appdrawer(),
+      bottomNavigationBar: const BottomNavigation(),
       appBar: const Appbar(),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30.0),

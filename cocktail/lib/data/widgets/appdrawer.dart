@@ -23,15 +23,15 @@ class Appdrawer extends StatelessWidget {
         children: [
            DrawerHeader(
               decoration:
-                  BoxDecoration(color: Color.fromARGB(255, 245, 206, 88)),
+                  const BoxDecoration(color: Color.fromARGB(255, 245, 206, 88)),
               child: Column(
                 children: [
-                  Circleavathar(
+                  const Circleavathar(
                     url: "assets/images/—Pngtree—cartoon cocktail_2716380.png",
                   ),
                   Text(
                     "${auth.currentUser!.email}",
-                    style: TextStyle(fontSize: 18),
+                    style: const TextStyle(fontSize: 18),
                   )
                 ],
               )),
@@ -49,7 +49,7 @@ class Appdrawer extends StatelessWidget {
                   "Cocktail",
                 ),
                 onPressed: () {
-                  Get.to(() =>  HomePage());
+                  Get.to(() =>  const HomePage());
                 },
               ),
               MenuItemButton(

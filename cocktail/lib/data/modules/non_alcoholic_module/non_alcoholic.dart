@@ -22,7 +22,7 @@ class _NonAlcoholicPageState extends State<NonAlcoholicPage> {
         padding: const EdgeInsets.symmetric(horizontal: 30.0),
         child: ListView(
           children: [
-            Center(child: Text("Non-Alcoholic",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w500),)),
+            const Center(child: Text("Non-Alcoholic",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w500),)),
             const SizedBox(
               height: 30,
             ),

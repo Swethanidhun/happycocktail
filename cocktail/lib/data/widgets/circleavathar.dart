@@ -10,11 +10,11 @@ class Circleavathar extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: CircleAvatar(
-        child: Container(
-          height: 28,
-          child: Image(image: AssetImage(url),color:Appcolor.greenButton)),
         backgroundColor:Appcolor.lightGreen,
         maxRadius: 30,
+        child: SizedBox(
+          height: 28,
+          child: Image(image: AssetImage(url),color:Appcolor.greenButton)),
       ),
     );
   }

@@ -1,8 +1,9 @@
-import 'package:cocktail/data/modules/Home_module/Home_controller.dart';
-import 'package:cocktail/data/widgets/Card.dart';
-import 'package:cocktail/data/widgets/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../../widgets/Card.dart';
+import '../../widgets/appbar.dart';
+import '../Home_module/Home_controller.dart';
 
 class OrdinaryDrink extends StatefulWidget {
   const OrdinaryDrink({super.key});

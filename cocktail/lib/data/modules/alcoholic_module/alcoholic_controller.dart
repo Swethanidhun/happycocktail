@@ -12,12 +12,12 @@ class AlcoholicController extends GetxController {
     alcoholiclist.value = data;
   }
 
-    final Detailslist = List<Detailsmodel>.empty(growable: true).obs;
+    final detailslist = List<Detailsmodel>.empty(growable: true).obs;
 
   Future getDetails(int index) async {
     final id = alcoholiclist[index].idDrink;
     final data = await apis.getDetails(id!);
-    Detailslist.value = data;
+    detailslist.value = data;
   }
 
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Textfield extends StatelessWidget {
-   Textfield({super.key,required this.headline,required this.controller});
+   const Textfield({super.key,required this.headline,required this.controller});
 final String headline;
 final TextEditingController? controller;
   @override
@@ -10,8 +10,8 @@ final TextEditingController? controller;
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
          Padding(
-          padding: EdgeInsets.only(left: 20),
-          child: Text(headline,style: TextStyle(fontWeight: FontWeight.w500)),
+          padding: const EdgeInsets.only(left: 20),
+          child: Text(headline,style: const TextStyle(fontWeight: FontWeight.w500)),
         ),
         const SizedBox(height: 10,),
         Container(

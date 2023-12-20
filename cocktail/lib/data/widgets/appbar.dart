@@ -1,6 +1,5 @@
 import 'package:cocktail/data/modules/Home_module/Homepage.dart';
 import 'package:cocktail/data/modules/ordinarydrink_module/ordinaryDrink.dart';
-import 'package:cocktail/data/widgets/appdrawer.dart';
 import 'package:cocktail/data/widgets/circleavathar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -55,7 +54,7 @@ class Appbar extends StatelessWidget implements PreferredSizeWidget {
                     Circleavathar(
                       url: "assets/images/cocktail.png",
                       onTap: () {
-                        Get.to(() =>  HomePage());
+                        Get.to(() =>  const HomePage());
                       },
                     ),
                     Circleavathar(

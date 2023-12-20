@@ -1,7 +1,9 @@
-import 'package:cocktail/data/api/api_connect.dart';
-import 'package:cocktail/data/models/cocktaildetailsbyidmodel.dart';
-import 'package:cocktail/data/models/ordinarydrinkmodel.dart';
+
 import 'package:get/get.dart';
+
+import '../../api/api_connect.dart';
+import '../../models/cocktaildetailsbyidmodel.dart';
+import '../../models/ordinarydrinkmodel.dart';
 
 class HomeController extends GetxController {
   final ApiConnect apis = Get.find<ApiConnect>();
@@ -25,14 +27,9 @@ class HomeController extends GetxController {
 
 @override
   void onInit() {
-    // TODO: implement onInit
     super.onInit();
     getCocktailByid();
     getOrdinaryDrink();
 
-  }
-  @override
-  void onReady() {
-    super.onReady();
   }
 }

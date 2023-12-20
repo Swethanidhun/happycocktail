@@ -1,8 +1,9 @@
-import 'package:cocktail/data/modules/Signin_module/signin_controller.dart';
-import 'package:cocktail/data/widgets/button.dart';
-import 'package:cocktail/data/widgets/textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../../widgets/button.dart';
+import '../../widgets/textfield.dart';
+import 'signin_controller.dart';
 class Signin extends StatefulWidget {
   const Signin({super.key});
 
@@ -75,7 +76,7 @@ class _SigninState extends State<Signin> {
                 Button(
                   text: "Sign up",
                   onPressed: () {
-                    signincontroller.SignUp();
+                    signincontroller.signUp();
                     // Get.to(() => const Login());
                   },
                   width: double.infinity,

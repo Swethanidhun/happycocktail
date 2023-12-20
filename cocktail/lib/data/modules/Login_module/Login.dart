@@ -1,12 +1,11 @@
-import 'package:cocktail/data/modules/Signin_module/Signin.dart';
-import 'package:cocktail/data/modules/Signin_module/signin_controller.dart';
-import 'package:cocktail/data/modules/foregotpasswordmodule/forgotpassword.dart';
-import 'package:cocktail/data/widgets/button.dart';
-import 'package:cocktail/data/widgets/textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/get_navigation.dart';
+
+import '../../widgets/button.dart';
+import '../../widgets/textfield.dart';
+import '../Signin_module/Signin.dart';
+import '../Signin_module/signin_controller.dart';
+import '../foregotpasswordmodule/forgotpassword.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -73,7 +72,7 @@ class _LoginState extends State<Login> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Get.to(() => ForgotPassword());
+                    Get.to(() => const ForgotPassword());
                   },
                   child: const Text(
                     "Forgot password?",

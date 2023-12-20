@@ -1,10 +1,9 @@
-import 'package:cocktail/data/modules/alcoholic_module/alcoholic_controller.dart';
 import 'package:cocktail/data/modules/content_module/content.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class Categorycard extends StatelessWidget {
-  Categorycard({super.key, required this.name,required this.url,required this.index});
+  const Categorycard({super.key, required this.name,required this.url,required this.index});
   final String name;
 final String url;
 final int index;
