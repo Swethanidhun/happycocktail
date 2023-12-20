@@ -1,3 +1,4 @@
+import 'package:cocktail/data/modules/Login_module/login_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -19,6 +20,8 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     Get.put(SigninController());
     final signincontroller = Get.find<SigninController>();
+    Get.put(LoginController());
+    final logincontroller = Get.find<LoginController>();
 
     return Scaffold(
         resizeToAvoidBottomInset: false,
@@ -111,6 +114,18 @@ class _LoginState extends State<Login> {
                     )
                   ],
                 ),
+                SizedBox(
+                  height: 20,
+                ),
+                Center(
+                    child: Container(
+                        child: GestureDetector(
+                          onTap: () {
+                            logincontroller.signInWithGoogle();
+                          },
+                            child: Image(
+                                image: AssetImage(
+                                    "assets/images/icons8-google-48.png"))))),
               ],
             ),
           ),

@@ -1,18 +1,14 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cocktail/data/models/usermodel.dart';
 import 'package:cocktail/data/modules/Home_module/Homepage.dart';
 import 'package:cocktail/data/modules/Login_module/Login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:hive/hive.dart';
 import 'package:uuid/uuid.dart';
 
 class SigninController extends GetxController {
   FirebaseAuth auth = FirebaseAuth.instance;
-  FirebaseFirestore db = FirebaseFirestore.instance;
-  final store = GetStorage();
   final usernamecontroller = TextEditingController();
   final emailcontroller = TextEditingController();
   final passwordcontroller = TextEditingController();
@@ -42,14 +38,6 @@ class SigninController extends GetxController {
     box1.put('email_${user.id}', auth.currentUser!.email);
     box1.put('password_${user.id}', passwordcontroller.text);
     box1.put('username_${user.id}', usernamecontroller.text);
-    await db
-        .collection("login")
-        .add(user.toJson())
-        .whenComplete(
-            () => Get.snackbar("Success", "Your account has been created"))
-        .catchError((error, stackTrace) {
-      Get.snackbar("Error", "Someting went wrong , Try again");
-    });
   }
 
   signOut() async {

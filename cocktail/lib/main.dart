@@ -5,11 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/adapters.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    options: const FirebaseOptions(apiKey: "AIzaSyAWmpPcncGvkfmTdfXg1JmxVhO1l9vHm90", appId: "1:60298523262:android:cda437a0dfac9fd78d9e2f", messagingSenderId: "60298523262", projectId: "happycocktail")
-  );
+      options: const FirebaseOptions(
+          apiKey: "AIzaSyAWmpPcncGvkfmTdfXg1JmxVhO1l9vHm90",
+          appId: "1:60298523262:android:cda437a0dfac9fd78d9e2f",
+          messagingSenderId: "60298523262",
+          projectId: "happycocktail"));
   await Hive.initFlutter();
   runApp(const MyApp());
 }
@@ -19,7 +22,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-        Get.put(ApiConnect());
+    Get.put(ApiConnect());
 
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
@@ -32,4 +35,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-

@@ -8,20 +8,24 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../modules/Login_module/login_controller.dart';
+
 class Appdrawer extends StatelessWidget {
   const Appdrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
     FirebaseAuth auth = FirebaseAuth.instance;
-        Get.put(SigninController());
+    Get.put(SigninController());
     final signincontroller = Get.find<SigninController>();
+    Get.put(LoginController());
+    final logincontroller = Get.find<LoginController>();
 
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
-           DrawerHeader(
+          DrawerHeader(
               decoration:
                   const BoxDecoration(color: Color.fromARGB(255, 245, 206, 88)),
               child: Column(
@@ -30,7 +34,9 @@ class Appdrawer extends StatelessWidget {
                     url: "assets/images/—Pngtree—cartoon cocktail_2716380.png",
                   ),
                   Text(
-                    "${auth.currentUser!.email}",
+                    auth.currentUser!.email != null
+                    ?"${auth.currentUser!.email}"
+                    :"User",
                     style: const TextStyle(fontSize: 18),
                   )
                 ],
@@ -49,7 +55,7 @@ class Appdrawer extends StatelessWidget {
                   "Cocktail",
                 ),
                 onPressed: () {
-                  Get.to(() =>  const HomePage());
+                  Get.to(() => const HomePage());
                 },
               ),
               MenuItemButton(
@@ -104,6 +110,7 @@ class Appdrawer extends StatelessWidget {
           GestureDetector(
             onTap: () {
               signincontroller.signOut();
+              logincontroller.googleSignOut();
             },
             child: const ListTile(
               title: Text("Sign out"),
